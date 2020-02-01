@@ -73,11 +73,11 @@ def main():
     training_inputs, training_results = zip(*training_data)
     Validation_inputs, Validation_results = zip(*validation_data)
     print('test')
-    batch_size=1000;
+    batch_size=100;
     print(len(training_inputs))
     final = manager.train_nets(training_inputs, training_results, 0.1, 1, batch_size, 0.1, 0.1, [784, 5, 5, 10],
             [sigmoid] * 3, [d_sigmoid] * 3, squared_error, d_squared_error, 20)
-    final.train(training_inputs, training_results, 0.1, 3000, batch_size, True)
+    final.train(training_inputs, training_results, 0.1, 5, batch_size, True)
     # Validation test
     Validation_cnt = 0
     for input, output in validation_data:

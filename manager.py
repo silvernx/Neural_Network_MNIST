@@ -27,6 +27,7 @@ def train_nets(inputs, outputs, training_rate, epochs, batch_size, outer_min,
             output = network.train(inputs, outputs, training_rate, epochs,
                     batch_size, False)
             print('finished a network')
+            print('output error = ' + output)
             sum += output
             if output < minimum:
                 minimum = output
