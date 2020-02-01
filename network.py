@@ -101,7 +101,9 @@ class FeedForwardNetwork:
             #np.random.shuffle(data)
             #inputs, outputs = zip(*data)
             total_error = 0
+            debugging_cnt = 0
             for j in range(len(inputs)):
+                debugging_cnt += 1
                 output = self.prop_to_and_fro(inputs[j], outputs[j],
                         training_rate)
                 if verbose and (i - 1) % 100 == 0:
@@ -111,9 +113,12 @@ class FeedForwardNetwork:
                     local_error += self.f_cost(output[k], outputs[j][k])
                 local_error /= len(output)
                 total_error += local_error
+                if (debugging_cnt + 1) % 100 == 0:
+                    print(debugging_cnt)
                 if (j + 1) % batch_size == 0:
                     self.update(training_rate, batch_size)
                 #print("No Flag")
+
             total_error /= len(inputs)
             print('No Flag')
             if verbose and (i - 1) % 100 == 0:

@@ -71,7 +71,7 @@ def main():
     training_data, validation_data, test_data = load_data_wrapper()
     print('test')
     training_inputs, training_results = zip(*training_data)
-    Validation_inputs, Validation_results = zip(*Validation_data)
+    Validation_inputs, Validation_results = zip(*validation_data)
     print('test')
     batch_size=1000;
     print(len(training_inputs))
@@ -89,7 +89,7 @@ def main():
                 opt=i
         if opt == output:
             Validation_cnt +=1
-    print('Validation = '' + Validation_cnt)
+    print('Validation = ' + Validation_cnt)
     print('Success Rate: ' + Validation_cnt/len(Validation_results))
 
 if __name__ == '__main__':
