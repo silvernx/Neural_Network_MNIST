@@ -88,8 +88,8 @@ def main():
                 opt=i
         if opt == output:
             Validation_cnt +=1
-    print('Validation = ' + Validation_cnt)
-    print('Success Rate: ' + Validation_cnt/len(Validation_results))
+    print("Validation =", Validation_cnt)
+    print("Success Rate:", Validation_cnt/len(Validation_results))
 
 if __name__ == '__main__':
     main()
