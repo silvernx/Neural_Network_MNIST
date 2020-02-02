@@ -30,10 +30,11 @@ def train_nets(inputs, outputs, training_rate, epochs, batch_size, outer_min,
             if output < minimum:
                 minimum = output
                 minnet = network
-            if minimum < outer_min:
-                return minnet
+            #if minimum < outer_min:
+            #   return minnet
         print("Couldn't find anything")
         avg = sum / num_nets
         print(minimum, avg, random_limit)
+        networks.clear()
         random_limit *= 10
     return minnet
