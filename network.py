@@ -124,7 +124,7 @@ class FeedForwardNetwork:
                 #print("No Flag")
 
             total_error /= len(inputs)
-            if verbose and (i - 1) % 100 == 0:
+            if verbose and (i+1) % 100 == 0:
                 print("Epoch " + str(i + 1) + ": Error: " + str(total_error))
         #if verbose:
             return total_error
