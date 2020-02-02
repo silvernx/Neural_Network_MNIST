@@ -70,26 +70,35 @@ def main():
     training_data, validation_data, test_data = load_data_wrapper()
     training_inputs, training_results = zip(*training_data)
     Validation_inputs, Validation_results = zip(*validation_data)
-    batch_size=100;
+    batch_size=10;
     print(len(training_inputs))
-    final = manager.train_nets(training_inputs, training_results, 0.1, 1, batch_size, 0.1, 0.1, [784, 5, 5, 10],
+    training_inputs_small=training_inputs[0:1000]
+    training_results_small=training_inputs[0:1000]
+    final = manager.train_nets(training_inputs_small, training_results_small, 0.1, 1, batch_size, 0.001, 0.1, [784, 5, 5, 10],
             [sigmoid] * 3, [d_sigmoid] * 3, squared_error, d_squared_error, 5)
     print("Start Deep Training")
-    final.train(training_inputs, training_results, 0.1, 1, batch_size, True)
+    training_inputs_medium=training_inputs[0:5000]
+    training_results_medium=training_inputs[0:5000]
+    final.train(training_inputs_medium, training_results_medium, 0.1, 1, batch_size, True)
+    outpt=final.train(training_inputs_small, training_results_small, 0.1, 1,
+            batch_size, False)
+    print("Square error =", outpt)
     # Validation test
     print("Start Validation Tests")
     Validation_cnt = 0
-    for input, output in validation_data:
-        ret = final.prop(input)
+    for i in range(1000):
+        test_input=Validation_inputs[i]
+        test_output=Validation_results[i]
+        ret = final.prop(test_input)
         max = 0
-        for i in enumerate(10):
-            if ret[i] > max:
-                max=ret[i]
-                opt=i
-        if opt == output:
+        for j in range(10):
+            if ret[j] > max:
+                max=ret[j]
+                opt=j
+        if opt == test_output:
             Validation_cnt +=1
-    print("Validation =", Validation_cnt)
-    print("Success Rate:", Validation_cnt/len(Validation_results))
+    print("Correct Answer =", Validation_cnt)
+    print("Success Rate:", Validation_cnt/1000)
 
 if __name__ == '__main__':
     main()

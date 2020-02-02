@@ -20,7 +20,6 @@ def train_nets(inputs, outputs, training_rate, epochs, batch_size, outer_min,
         print('building networks')
         build_networks(layers, activations, d_activations, cost, d_cost,
                 num_nets, random_limit)
-        print('built networks')
         for network in networks:
             output = network.train(inputs, outputs, training_rate, epochs,
                     batch_size, False)

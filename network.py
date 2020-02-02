@@ -2,6 +2,10 @@ import numpy as np
 from node import *
 
 def sigmoid(x):
+    if x>20:
+        return sigmoid(20)
+    if x<-20:
+        return sigmoid(-20)
     return 1 / (1 + np.exp(-x))
 
 def itself(x):
@@ -122,9 +126,9 @@ class FeedForwardNetwork:
             total_error /= len(inputs)
             if verbose and (i - 1) % 100 == 0:
                 print("Epoch " + str(i + 1) + ": Error: " + str(total_error))
-        if verbose:
+        #if verbose:
             return total_error
-        if not verbose:
-            return local_error
+        #if not verbose:
+            #return local_error
         #return self
             #input()
