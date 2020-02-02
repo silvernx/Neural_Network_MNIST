@@ -18,6 +18,7 @@ def train_nets(inputs, outputs, training_rate, epochs, batch_size, outer_min,
         sum = 0
         #while minimum > outer_min:
         print('building networks')
+        print("Random Limit :", random_limit)
         build_networks(layers, activations, d_activations, cost, d_cost,
                 num_nets, random_limit)
         for network in networks:
@@ -36,5 +37,5 @@ def train_nets(inputs, outputs, training_rate, epochs, batch_size, outer_min,
         avg = sum / num_nets
         print(minimum, avg, random_limit)
         networks.clear()
-        random_limit *= 10
+        random_limit *= 3
     return minnet

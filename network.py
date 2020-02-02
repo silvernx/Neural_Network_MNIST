@@ -2,10 +2,6 @@ import numpy as np
 from node import *
 
 def sigmoid(x):
-    if x>20:
-        return sigmoid(20)
-    if x<-20:
-        return sigmoid(-20)
     return 1 / (1 + np.exp(-x))
 
 def itself(x):
