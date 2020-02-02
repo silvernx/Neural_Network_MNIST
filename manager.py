@@ -12,7 +12,6 @@ def build_networks(layers, activations, d_activations, cost, d_cost, num_nets,
 
 def train_nets(inputs, outputs, training_rate, epochs, batch_size, outer_min,
         random_limit, layers, activations, d_activations, cost, d_cost, num_nets):
-    print("test")
     minimum = 100
     minnet = 3
     while (minimum > outer_min): #or random_limit>100001):
@@ -23,16 +22,17 @@ def train_nets(inputs, outputs, training_rate, epochs, batch_size, outer_min,
                 num_nets, random_limit)
         print('built networks')
         for network in networks:
-            print('Almost finished a network')
             output = network.train(inputs, outputs, training_rate, epochs,
                     batch_size, False)
             print('finished a network')
-            print('output error = ' + output)
+            print("output error =", output)
+            # Everything below subjected to changes
             sum += output
             if output < minimum:
                 minimum = output
                 minnet = network
-
+            if minimum < outer_min:
+                return minnet
         print("Couldn't find anything")
         avg = sum / num_nets
         print(minimum, avg, random_limit)

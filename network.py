@@ -97,9 +97,9 @@ class FeedForwardNetwork:
     def train(self, inputs, outputs, training_rate, epochs, batch_size, verbose):
         assert len(inputs) % batch_size == 0, "Batch size must divide inputs"
         for i in range(epochs):
-            #data = list(zip(inputs, outputs))
-            #np.random.shuffle(data)
-            #inputs, outputs = zip(*data)
+            data = list(zip(inputs, outputs))
+            np.random.shuffle(data)
+            inputs, outputs = zip(*data)
             total_error = 0
             debugging_cnt = 0
             for j in range(len(inputs)):
@@ -120,9 +120,11 @@ class FeedForwardNetwork:
                 #print("No Flag")
 
             total_error /= len(inputs)
-            print('No Flag')
             if verbose and (i - 1) % 100 == 0:
                 print("Epoch " + str(i + 1) + ": Error: " + str(total_error))
-        return total_error
+        if verbose:
+            return total_error
+        if not verbose:
+            return local_error
         #return self
             #input()
