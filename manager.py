@@ -37,5 +37,4 @@ def train_nets(inputs, outputs, training_rate, epochs, batch_size, outer_min,
         avg = sum / num_nets
         print(minimum, avg, random_limit)
         random_limit *= 10
-
     return minnet
