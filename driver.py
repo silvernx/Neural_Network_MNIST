@@ -70,7 +70,7 @@ def main():
     training_data, validation_data, test_data = load_data_wrapper()
     training_inputs, training_results = zip(*training_data)
     Validation_inputs, Validation_results = zip(*validation_data)
-    batch_size=20;
+    batch_size=10;
     print(len(Validation_inputs))
     training_inputs_small=training_inputs[0:1000]
     training_results_small=training_results[0:1000]
@@ -79,7 +79,7 @@ def main():
     print("Start Deep Training")
     training_inputs_medium=training_inputs[0:5000]
     training_results_medium=training_results[0:5000]
-    for i in range(2):
+    for i in range(10):
         outpt = final.train(training_inputs, training_results, 0.1, 1, batch_size, True)
     #outpt=final.train(training_inputs_small, training_results_small, 0.1, 1, batch_size, False)
         print("Square error =", outpt)
