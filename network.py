@@ -128,3 +128,9 @@ class FeedForwardNetwork:
             #return local_error
         #return self
             #input()
+    def clear(self):
+        for layer in self.layers:
+            for neuron in layer:
+                neuron.input = 0
+                neuron.activation = 0
+                
