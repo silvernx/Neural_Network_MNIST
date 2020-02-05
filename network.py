@@ -113,7 +113,7 @@ class FeedForwardNetwork:
                     local_error += self.f_cost(output[k], outputs[j][k])
                 local_error /= len(output)
                 total_error += local_error
-                if (debugging_cnt + 1) % 100 == 0:
+                if (debugging_cnt + 1) % 10000 == 0:
                     print(debugging_cnt)
                 if (j + 1) % batch_size == 0:
                     self.update(training_rate, batch_size)
