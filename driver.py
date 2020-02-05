@@ -74,12 +74,12 @@ def main():
     print(len(Validation_inputs))
     training_inputs_small=training_inputs[0:5000]
     training_results_small=training_results[0:5000]
-    final = manager.train_nets(training_inputs_small, training_results_small, 0.1, 1, batch_size, 0.5, 10, [784, 15, 15, 10],
+    final = manager.train_nets(training_inputs_small, training_results_small, 0.1, 1, batch_size, 0.5, 10, [784, 30, 25, 10],
             [sigmoid] * 3, [d_sigmoid] * 3, squared_error, d_squared_error, 10)
     print("Start Deep Training")
     training_inputs_medium=training_inputs[0:5000]
     training_results_medium=training_results[0:5000]
-    for i in range(20):
+    for i in range(30):
         outpt = final.train(training_inputs, training_results, 0.1, 1, batch_size, True)
     #outpt=final.train(training_inputs_small, training_results_small, 0.1, 1, batch_size, False)
         print("Square error =", outpt)
