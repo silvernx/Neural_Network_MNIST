@@ -80,7 +80,7 @@ def main():
     training_inputs_medium=training_inputs[0:5000]
     training_results_medium=training_results[0:5000]
     for i in range(60):
-        outpt = final.train(training_inputs, training_results, 1, 1, batch_size, True)
+        outpt = final.train(training_inputs, training_results, 0.1, 1, batch_size, True)
     #outpt=final.train(training_inputs_small, training_results_small, 0.1, 1, batch_size, False)
         print("Square error =", outpt)
     # Validation test
