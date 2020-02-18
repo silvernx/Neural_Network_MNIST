@@ -75,17 +75,17 @@ def main():
     training_inputs_small=training_inputs[0:10000]
     training_results_small=training_results[0:10000]
     final = manager.train_nets(training_inputs_small, training_results_small, 1, 1, batch_size, 0.3, 10, [784, 30, 20, 10],
-            [sigmoid] * 3, [d_sigmoid] * 3, squared_error, d_squared_error, 20)
+            [sigmoid] * 3, [d_sigmoid] * 3, squared_error, d_squared_error, 40)
     print("Start Deep Training")
     training_inputs_medium=training_inputs[0:5000]
     training_results_medium=training_results[0:5000]
     training_rate = 1
-    for i in range(150):
+    for i in range(100):
         outpt = final.train(training_inputs, training_results, training_rate, 1, batch_size, True)
     #outpt=final.train(training_inputs_small, training_results_small, 0.1, 1, batch_size, False)
         print("Square error =", outpt)
-        if i % 20 == 0:
-            training_rate *= 5   
+        if (i+1) % 24 == 0:
+            training_rate *= 2   
     # Validation test
     print("Start Validation Tests")
     Validation_cnt = 0
